@@ -2,16 +2,6 @@
 # $ gcloud container builds submit . --config=cloudbuild.yaml
 
 steps:
-# Print Node.js version.
-- name: 'gcr.io/$PROJECT_ID/base'
-  entrypoint: 'node'
-  args: ['--version']
-
-# Print npm version.
-- name: 'gcr.io/$PROJECT_ID/base'
-  entrypoint: 'npm'
-  args: ['--version']
-
 # build the container
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--network=cloudbuild','-t', 'gcr.io/$PROJECT_ID/base2', '.']
@@ -22,6 +12,16 @@ steps:
   args: ["run", "create-env"]
   env:
    - 'PORT=${_PORT}'
+
+# Print Node.js version.
+- name: 'gcr.io/$PROJECT_ID/base'
+  entrypoint: 'node'
+  args: ['--version']
+
+# Print npm version.
+- name: 'gcr.io/$PROJECT_ID/base'
+  entrypoint: 'npm'
+  args: ['--version']
 
 # Build project.
 - name: 'gcr.io/$PROJECT_ID/base'
