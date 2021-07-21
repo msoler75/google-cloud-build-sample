@@ -1,3 +1,5 @@
+ARG SECRET_KEY
+
 FROM node:12
 
 WORKDIR /usr/src/app
@@ -14,7 +16,7 @@ EXPOSE 8080
 ENV HOST=0.0.0.0
 ENV PORT=8080
 ENV NODE_ENV production
-ENV SECRET_KEY=$_SECRET_KEY
+ENV SECRET_KEY=$SECRET_KEY
 
 RUN npm run createenv
 

@@ -5,13 +5,13 @@ steps:
 # build the container
 - name: 'gcr.io/cloud-builders/docker'
   env:
-    - '_SECRET_KEY=$_SECRET_KEY'
+    - 'SECRET_KEY=$_SECRET_KEY'
   args: 
     - build
     - '--network=cloudbuild'
     - '-t'
     - 'gcr.io/$PROJECT_ID/base'
-    - '--build-arg=_SECRET_KEY=${_SECRET_KEY}'
+    - '--build-arg=SECRET_KEY=${_SECRET_KEY}'
     - .
 
 # create .env file
@@ -56,3 +56,6 @@ steps:
 #  args: ['run', 'start']
 
 images: ['gcr.io/$PROJECT_ID/base']
+
+substitutions:
+  SECRET_KEY: $_SECRET_KEY
