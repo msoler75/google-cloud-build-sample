@@ -14,7 +14,7 @@ EXPOSE 8080
 ENV HOST=0.0.0.0
 ENV PORT=8080
 ENV NODE_ENV production
-# ENV SECRET_KEY=key_is_sesam
+ENV SECRET_KEY=$_SECRET_KEY
 
 RUN npm run createenv
 
