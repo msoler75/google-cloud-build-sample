@@ -7,7 +7,7 @@ RUN npm install
 #RUN npm ci --only=production
 COPY . .
 
-RUN npm install dotenv
+# RUN npm install dotenv
 
 EXPOSE 8080
 

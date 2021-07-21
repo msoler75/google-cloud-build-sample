@@ -23,6 +23,11 @@ steps:
   entrypoint: 'npm'
   args: ['--version']
 
+# import dotenv.
+- name: 'gcr.io/$PROJECT_ID/base'
+  entrypoint: 'npm'
+  args: ['install', 'dotenv']
+
 # Build project.
 - name: 'gcr.io/$PROJECT_ID/base'
   entrypoint: 'npm'
