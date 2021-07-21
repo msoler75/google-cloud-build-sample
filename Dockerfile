@@ -7,7 +7,7 @@ RUN npm install
 #RUN npm ci --only=production
 COPY . .
 
-# RUN npm install dotenv
+RUN npm install dotenv
 
 EXPOSE 8080
 
@@ -16,9 +16,9 @@ ENV PORT=8080
 ENV NODE_ENV production
 # ENV SECRET_KEY=key_is_sesam
 
-# RUN npm run createenv
+RUN npm run createenv
 
-# RUN npm run build
+RUN npm run build
 
 #start the service
-# CMD [ "npm", "run", "start" ]
+CMD [ "npm", "run", "start" ]
