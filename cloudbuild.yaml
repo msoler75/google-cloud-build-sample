@@ -47,3 +47,6 @@ steps:
 #  args: ['run', 'start']
 
 images: ['gcr.io/$PROJECT_ID/base']
+
+substitutions:
+  _SECREY_KEY: $_SECRET_KEY
