@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
     return 'Server is running in ' + (PORT===8080?'default port':'.env PORT')+` ${PORT}`;
 });
 
+app.get('/secret', (req, res) => {
+    return 'Secret is:' + process.env.SECRET_KEY;
+});
+
 app.get('/env', (req, res) => {
     res.send({ message: 'ENV:' + JSON.stringify(process.env) });
 });
