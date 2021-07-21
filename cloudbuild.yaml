@@ -33,9 +33,13 @@ steps:
   entrypoint: 'npm'
   args: ['run', 'build']
 
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'sample-server', '--image', 'gcr.io/$PROJECT_ID/base', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+
 # Run server.
-- name: 'gcr.io/$PROJECT_ID/base'
-  entrypoint: 'npm'
-  args: ['run', 'start']
+#- name: 'gcr.io/$PROJECT_ID/base'
+#  entrypoint: 'npm'
+#  args: ['run', 'start']
 
 images: ['gcr.io/$PROJECT_ID/base']
