@@ -13,11 +13,6 @@ steps:
   env:
    - 'PORT=${_PORT}'
 
-# Print Node.js version.
-- name: 'gcr.io/$PROJECT_ID/base'
-  entrypoint: 'node'
-  args: ['--version']
-
 # Print npm version.
 - name: 'gcr.io/$PROJECT_ID/base'
   entrypoint: 'npm'
@@ -32,5 +27,6 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/base'
   entrypoint: 'npm'
   args: ['run', 'start']
+
 
 images: ['gcr.io/$PROJECT_ID/base']
