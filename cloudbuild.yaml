@@ -4,7 +4,9 @@
 steps:
 # build the container
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--network=cloudbuild','-t', 'gcr.io/$PROJECT_ID/base', '--build-arg=ENV=$_SECREY_KEY', '.']
+  env:
+    - '_SECREY_KEY=$_SECREY_KEY'
+  args: ['build', '--network=cloudbuild','-t', 'gcr.io/$PROJECT_ID/base', '.']
 
 # create .env file
 - name: node:10.15.1
@@ -12,6 +14,7 @@ steps:
   args: ["run", "createenv"]
   env:
    - 'SECRET_KEY=${_SECRET_KEY}'
+   - '_SECRET_KEY=${_SECRET_KEY}'
 
 # Print Node.js version.
 - name: 'gcr.io/$PROJECT_ID/base'
