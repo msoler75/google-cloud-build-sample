@@ -4,7 +4,8 @@
   "description": "Sample project to test google cloud build automated deployment with .ENV file",
   "scripts": {
     "start": "node server.js",
-    "build": "node build.js"
+    "build": "node build.js",
+    "create-env": "printenv > .env"
   },
   "repository": {
     "type": "git",
