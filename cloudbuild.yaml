@@ -9,9 +9,9 @@ steps:
 # create .env file
 - name: node:10.15.1
   entrypoint: npm
-  args: ["run", "create-env"]
+  args: ["run", "createenv"]
   env:
-   - 'PORT=${_PORT}'
+   - 'SECRET_KEY=${_SECRET_KEY}'
 
 # Print Node.js version.
 - name: 'gcr.io/$PROJECT_ID/base'

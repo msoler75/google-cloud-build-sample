@@ -1,24 +1,33 @@
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config()
 const path = require('path');
 const express = require('express');
 const app = express();
 
 const DEFAULT_PORT = 8080;
 const PORT = process.env.PORT || DEFAULT_PORT;
+const HOST = '0.0.0.0';
 
 app.get('/', (req, res) => {
-    return 'Server is running in ' + (PORT===8080?'default port':'.env PORT')+` ${PORT}`;
+    console.log('request /');
+    res.send('Server is running in ' + (PORT===8080?'default port':'.env PORT')+` ${PORT}`);
 });
 
 app.get('/secret', (req, res) => {
-    return 'Secret is:' + process.env.SECRET_KEY;
+    console.log('request /secret');
+    res.send('Secret is:' + process.env.SECRET_KEY);
 });
 
 app.get('/env', (req, res) => {
-    res.send({ message: 'ENV:' + JSON.stringify(process.env) });
+    console.log('request /env');
+    res.send(JSON.stringify(process.env));
 });
 
-app.listen(PORT, () => {
-    console.log(`Application listening on port ${PORT}!`);
+const server = app.listen(PORT, HOST, () => {
+    console.log(`Application listening on port http://${HOST}:${PORT}`);
+});
+
+process.on('SIGINT', () => {
+    console.log('Closing server...');
+    server.close();
+    process.exit()
 });
