@@ -1,15 +1,14 @@
 {
   "name": "google-cloud-build-sample",
   "version": "1.0.0",
-  "description": "Sample project to test google cloud build and automated deployment from github",
-  "main": "server.js",
+  "description": "Sample project to test google cloud build automated deployment with .ENV file",
   "scripts": {
     "start": "node server.js",
     "build": "node build.js"
   },
   "repository": {
     "type": "git",
-    "url": "http://gitsample"
+    "url": "https://github.com/msoler75/google-cloud-build-sample"
   },
   "keywords": [
     "example",
@@ -17,7 +16,8 @@
     "cloud",
     "build",
     "github",
-    "deploy"
+    "deploy",
+    "env"
   ],
   "author": "Marcel Soler",
   "license": "ISC",
