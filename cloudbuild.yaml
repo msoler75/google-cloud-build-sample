@@ -4,7 +4,7 @@
 steps:
 # build the container
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--network=cloudbuild','-t', 'gcr.io/$PROJECT_ID/base2', '.']
+  args: ['build', '--network=cloudbuild','-t', 'gcr.io/$PROJECT_ID/base', '.']
 
 # create .env file
 - name: node:10.15.1
@@ -12,6 +12,11 @@ steps:
   args: ["run", "create-env"]
   env:
    - 'PORT=${_PORT}'
+
+# Print Node.js version.
+- name: 'gcr.io/$PROJECT_ID/base'
+  entrypoint: 'node'
+  args: ['--version']
 
 # Print npm version.
 - name: 'gcr.io/$PROJECT_ID/base'
@@ -27,6 +32,5 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/base'
   entrypoint: 'npm'
   args: ['run', 'start']
-
 
 images: ['gcr.io/$PROJECT_ID/base']
